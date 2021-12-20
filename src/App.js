@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import React , { useState } from 'react'
+import "text-to-speech-js"
+
+import MadLibOne from './lib01.js'
+import MadLibTwo from './lib02.js'
+import MadLibThree from './lib03.js'
+import MadLibFour from './lib04.js'
 
 function App() {
+
+    let [ one, setOne ] = useState(false)
+    let [ two, setTwo ] = useState(false)
+
+
+    const onClick = (event) => {
+        console.log(event.target.innerHTML) // string
+
+
+
+
+        // hide other MadLibs
+        // open selcted madlib.
+    }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+        <h1>MadLibs</h1>
+        <div className="container">
 
+            <div onClick={onClick} id="one">{one ? <MadLibOne   /> : <div>Mad Lib Number 1</div>}</div>
+            <div onClick={onClick} id="two">{two ? <MadLibTwo   /> : <div>Mad Lib Number 2</div>}</div>
+        </div>
+
+
+
+    </div>
+  )
+}
 export default App;
