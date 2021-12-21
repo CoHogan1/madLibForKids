@@ -4,8 +4,9 @@ import "text-to-speech-js"
 
 function MadLibOne() {
 
-    let [ toggle, setToggle ] = useState(false)
-    let [ answer, setAnswer ] = useState({one:'',two:'', three: '', four: '',
+    let [ toggle, setToggle ]   = useState(false)
+    let [ reading, setReading ] = useState(false)
+    let [ answer, setAnswer ]   = useState({one:'',two:'', three: '', four: '',
          five:'', six:'', seven:'',eight:'',nine:'',ten:'',eleven:'',twelve:''
     })
 
@@ -56,22 +57,26 @@ function MadLibOne() {
     }
 
     const read = (string) => {
-        // read the final version of the mad lib
-        // set readint to true
         console.log("reading....")
         let msg = new SpeechSynthesisUtterance();
         //var voices = window.speechSynthesis.getVoices();
         msg.onerror = (err)=> console.log(err)
         msg.text = string
-        console.log(msg);
+        console.log(msg)
+        setReading(true)
         window.speechSynthesis.speak(msg)
-        // reading = false
+        // this needs work
+        msg.onend = function end(){
+            console.log("end of message")
+            setReading(false)
+        }
+
     }
 
 
     const handleSubmit = (event) => {
-        // if reading === true, return
         event.preventDefault()
+        if (reading) { return false }
         let quit = false
         Object.values(answer).forEach(item => {
             // see if form inputs are all filled out
@@ -94,45 +99,46 @@ function MadLibOne() {
 
         <form onSubmit={handleSubmit}>
             <label>An Unusual name:</label>
-            <input type='text' name="one" onChange={onChange}></input>
+            <input type='text' name="one" onChange={onChange} placeholder="any name"></input>
 
             <label>The name of a place:</label>
-            <input type='text' name="two" onChange={onChange} ></input>
+            <input type='text' name="two" onChange={onChange} placeholder="location"></input>
 
             <label>The name of a character:</label>
-            <input type='text' name="three" onChange={onChange} ></input>
+            <input type='text' name="three" onChange={onChange} placeholder="any character"></input>
 
-            <label>The name of somewhere you'd place an ad:</label>
-            <input type='text' name="four" onChange={onChange} ></input>
+            <label>Where you place an ad:</label>
+            <input type='text' name="four" onChange={onChange} placeholder="tv bus-station"></input>
 
-            <label>A number:</label>
-            <input type='number' name="five" onChange={onChange} ></input>
+            <label>Any number:</label>
+            <input type='number' name="five" onChange={onChange} placeholder="1-10000000"></input>
 
             <label>A favorite food:</label>
-            <input type='text' name="six" onChange={onChange} ></input>
+            <input type='text' name="six" onChange={onChange} placeholder="tacos"></input>
 
             <label>A second favorite food:</label>
-            <input type='text' name="seven" onChange={onChange} ></input>
+            <input type='text' name="seven" onChange={onChange} placeholder="cake"></input>
 
             <label>An adjective:</label>
-            <input type='text' name="eight" onChange={onChange} ></input>
+            <input type='text' name="eight" onChange={onChange} placeholder="describe a noun"></input>
 
             <label>A specific time on the clock:</label>
-            <input type='text' name="nine" onChange={onChange} ></input>
+            <input type='text' name="nine" onChange={onChange} placeholder="12:49"></input>
 
             <label>An outdoor location:</label>
-            <input type='text' name="ten" onChange={onChange} ></input>
+            <input type='text' name="ten" onChange={onChange} placeholder="lake"></input>
 
             <label>A fun place to go:</label>
-            <input type='text' name="eleven" onChange={onChange} ></input>
+            <input type='text' name="eleven" onChange={onChange} placeholder="the dmv"></input>
 
             <label>An adverb (word ending in -ly):</label>
-            <input type='text' name="twelve" onChange={onChange} ></input>
+            <input type='text' name="twelve" onChange={onChange} placeholder="dangerously"></input>
 
-            <input type="submit" className="formSubmit" value="Read it to me"></input>
+        <div className="fullWidth">
+            <input type="submit" className="formSubmit" value="Read it to me please"></input>
+        </div>
+
         </form>
-
-
         {toggle ? <div className="fullStory">{str}</div> : null}
         </div>
     )

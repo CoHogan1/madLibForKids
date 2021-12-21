@@ -58,6 +58,8 @@ function App() {
             {three ? <MadLibThree /> : null}
             {four  ? <MadLibFour />  : null}
         </div>
+        {!one && !two && !three && !four ? <div className="story">Select a story</div> : null}
+
 
         <Footer />
     </div>

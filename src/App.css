@@ -3,6 +3,14 @@
     padding: 0;
     text-align: center;
 }
+
+/*  sec   background  main  */
+/* indago, maroon, blue */
+:root {
+    --color-primary: #1e2761;
+    --color-secondary: #7a2048;
+    --color-thirdendary: #408ec6;
+}
 /* banner */
 .App>h1 {
     margin: 0 auto;
@@ -10,14 +18,15 @@
     width: 100%;
     height: 40px;
     padding: 8px 0;
-    background-color: lime;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 /*  mad lib choser---nav */
 .nav {
     margin: 0 auto;
     width: 90%;
-    border: 4px solid #000;
+
     border-radius: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -25,12 +34,24 @@
 .nav > div {
     height: 50px;
     border-radius: 20px;
-    background-color: yellow;
+    background-color: var(--color-thirdendary);
 }
 .nav > div:active {
     border-radius: 20px;
     background-color: rgba(150,200,250, 0.5);
 
+}
+
+/* main directions */
+.story {
+    margin: 50px auto 0 auto;
+    padding-top:10px;
+    height: 100px;
+    line-height: 90px;
+    width: 300px;
+    font-size: 37px;
+    background-color: var(--color-primary);
+    color: white;
 }
 
 
@@ -39,11 +60,10 @@ form {
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 20px;
-    width: 550px;
-    border: 5px solid blue;
+    width: 600px;
+    border: 5px solid var(--color-thirdendary);
     border-radius: 30px;
-    background-color: rgba(0,0,100, 0.5);
-    /* get background of a page here. */
+    background-color: var(--color-secondary);
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
@@ -53,9 +73,10 @@ form {
 
 label {
     height: 20px;
-    line-height: 20px;
-    background-color: cyan;
-    color: black;
+    padding: 3px;
+    /* line-height: 20px; */
+    background-color: var(--color-thirdendary);
+    color: var(--color-primary);
     margin-right: 3px;
 }
 
@@ -63,24 +84,35 @@ input {
     height: 20px;
     right: 20px;
     margin: 5px 0;
-    border: 1px solid black;
+}
+
+.formSubmit{
+    margin-top: 10px;
+    height: 30px;
+    background-color: var(--color-thirdendary);
+    color: var(--color-primary);
+}
+.formSubmit:active {
+    background-color: var(--color-secondary);
+}
+
+.fullWidth{
+    width: 200%;
 }
 
 /* all madlib components */
 .madLib {
-    height: 600px;
-    background-color: yellow;
+    height: 650px;
+    background-color: var(--color-primary);
 }
 
 .madLib h2 {
-    background-color: purple;
+    padding: 10px;
+    color: var(--color-secondary);
+    background-color: var(--color-thirdendar);
 }
 
 
-/*  needs to be inside a div, and center that divs kidz */
-.formSubmit {
-
-}
 
 .fullStory {
     margin: 0 auto;
@@ -101,12 +133,17 @@ input {
 .footer {
     position: fixed;
     bottom: 0;
-    height: 40px;
+    height: 60px;
     width: 100%;
-    background-color: rgba(10,10,10, 0.7);
+    color: var(--color-thirdendar);
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
 
 }
 
-.footer > {
-    color: #fff;
+.footer > * {
+    font-weight: normal;
+    margin: 0 auto;
+    color: black;
 }
