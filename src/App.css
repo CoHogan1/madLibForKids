@@ -3,46 +3,110 @@
     padding: 0;
     text-align: center;
 }
-
-.btn-speak {
-    margin-top: 50px;
+/* banner */
+.App>h1 {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 40px;
+    padding: 8px 0;
+    background-color: lime;
 }
 
+/*  mad lib choser---nav */
+.nav {
+    margin: 0 auto;
+    width: 90%;
+    border: 4px solid #000;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.nav > div {
+    height: 50px;
+    border-radius: 20px;
+    background-color: yellow;
+}
+.nav > div:active {
+    border-radius: 20px;
+    background-color: rgba(150,200,250, 0.5);
+
+}
+
+
+/* all forms */
 form {
     margin: 0 auto;
-    width: 500px;
-    background-color: rgba(100,100,100, 0.5);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 550px;
+    border: 5px solid blue;
+    border-radius: 30px;
+    background-color: rgba(0,0,100, 0.5);
+    /* get background of a page here. */
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap: 2 rem;
     align-items: center;
     justify-content: space-between;
-
+    box-shadow: 5px 5px 20px black;
 }
+
+label {
+    height: 20px;
+    line-height: 20px;
+    background-color: cyan;
+    color: black;
+    margin-right: 3px;
+}
+
 input {
+    height: 20px;
     right: 20px;
     margin: 5px 0;
     border: 1px solid black;
 }
-label {
-    left: 5px;
-    border: 1px solid black;
+
+/* all madlib components */
+.madLib {
+    height: 600px;
+    background-color: yellow;
 }
+
+.madLib h2 {
+    background-color: purple;
+}
+
 
 /*  needs to be inside a div, and center that divs kidz */
 .formSubmit {
-    width: 100%;
-    margin: 0 auto;
+
 }
 
-.container {
+.fullStory {
     margin: 0 auto;
-    width: 90%;
-    border: 2px solid black;
-    display: grid;
-    grid-template-columns: repeat(1);
+    width: 85%;
+    background-color: darkblue;
+    color:white;
+    font-size: 1.25em;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow:5px 5px 20px black;
+    border: 3px solid blue;
+
 }
-.container div {
-    border: 2px solid #000;
-    height: 60px;
+
+
+
+/*  needs fixing */
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(10,10,10, 0.7);
+
+}
+
+.footer > {
+    color: #fff;
 }

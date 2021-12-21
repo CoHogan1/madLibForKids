@@ -129,3 +129,21 @@ Fill in the Blank Sheet for “Princess and the Blank”
 11) A fun place to go:
 
 12) An adverb (word ending in -ly):
+
+
+
+
+Cycling Over Rainbows
+One day, I decided to hop on my one and go one. Within 5 minutes of one outside,
+ it began to rain. But the one was still one.
+Suddenly, a one pops up from the one! I one as fast as I one to get to it, and
+I eventually reach it. I cycle harder and harder, up the one.
+Then an end comes, and races behind me. I cycle at high one to get to the top,
+and I reach the top. It's a one view from up here. Suddenly, another one appears
+ a few metres from my one. I one - still on the one - onto it. I one down and
+ watch the other one disappear. I continue one down, because there's nothing
+ else for me to one. Then before I know it, a one appears in front of me. I
+ continue one, and reach the new one. I continue one up and down one until it
+ was time to go one.
+When I reached one, it was 5 00. I burst through the one, and I was ready to
+tell my one about everything that happened today!

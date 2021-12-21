@@ -14,7 +14,7 @@ function MadLibThree() {
 
     return(
         <div className="madLib">
-            <div>three</div>
+            <h2>Mad Lib Three</h2>
 
 
         </div>

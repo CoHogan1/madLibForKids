@@ -89,6 +89,6 @@ let obj = {one: '1',two:"two",three:"three"}
 let val = Object.values(obj)
 
 
-Object.values(obj).forEach(item => { //.775
-    console.log(item)
-})
+// Object.values(obj).forEach(item => { //.775
+//     console.log(item)
+// })
