@@ -1,5 +1,7 @@
 import './App.css';
 import React , { useState } from 'react'
+import Say from 'react-say'
+
 import "text-to-speech-js"
 
 function MadLibOne() {
@@ -51,26 +53,35 @@ function MadLibOne() {
     NARRATOR: And they lived
     ${answer['twelve']} ever after!`
 
+
+    let len = `Once upon a time, there was a lonely Prince named...${answer['one']}
+    PRINCE: I'm lonely.
+    His mother, the Queen of...${answer['two']} wanted to help him find a princess that would make him happy.
+    QUEEN: There are so many women out there that think they are princesses
+    because they buy a Disney princess`
+
     const onChange = (event) => {
         event.preventDefault()
         setAnswer({...answer, [event.target.name]: event.target.value})
     }
 
-    const read = (string) => {
-        console.log("reading....")
+    const readToMe = () => {
+        console.log("reading madlib")
         let msg = new SpeechSynthesisUtterance();
-        //var voices = window.speechSynthesis.getVoices();
-        msg.onerror = (err)=> console.log(err)
-        msg.text = string
-        console.log(msg)
-        setReading(true)
-        window.speechSynthesis.speak(msg)
-        // this needs work
-        msg.onend = function end(){
-            console.log("end of message")
-            setReading(false)
-        }
+        let voices = speechSynthesis.getVoices();
+        let length = str.length
 
+        msg.chunckLength = length
+        msg.rate = 1
+        msg.lang = "en" // eng?
+
+        for (let i = 0; i < length; i = i + 200) {
+            // may need an early exit.
+            msg.text = str.slice(i, (i + 200))
+            window.speechSynthesis.speak(msg)
+        }
+        console.log(speechSynthesis.pending, " true is pending");
+        // reading turn to false.
     }
 
 
@@ -80,16 +91,15 @@ function MadLibOne() {
         let quit = false
         Object.values(answer).forEach(item => {
             // see if form inputs are all filled out
-            if (item === ''){
-                quit = true
-            }
+            if (item === '') { quit = true }
         })
+
         if (quit){
             console.log("fill out form properly");
+            // todo toggle a model asking for a form filled out properly.
             return
         }
         setToggle(true) // show story belod mad lib
-        read(str) // reads the string.
     }
 
 
@@ -134,9 +144,9 @@ function MadLibOne() {
             <label>An adverb (word ending in -ly):</label>
             <input type='text' name="twelve" onChange={onChange} placeholder="dangerously"></input>
 
-        <div className="fullWidth">
-            <input type="submit" className="formSubmit" value="Read it to me please"></input>
-        </div>
+            <input type="submit" className="formSubmit" value="Load Madlib"></input>
+
+            <button className= "readButton" onClick={readToMe}>Read MadLib</button>
 
         </form>
         {toggle ? <div className="fullStory">{str}</div> : null}

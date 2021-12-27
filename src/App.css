@@ -26,7 +26,6 @@
 .nav {
     margin: 0 auto;
     width: 90%;
-
     border-radius: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -74,6 +73,7 @@ form {
 label {
     height: 20px;
     padding: 3px;
+    text-align: left;
     /* line-height: 20px; */
     background-color: var(--color-thirdendary);
     color: var(--color-primary);
@@ -98,6 +98,11 @@ input {
 
 .fullWidth{
     width: 200%;
+}
+
+.readButton {
+    width: 100%;
+    background-color: lime;
 }
 
 /* all madlib components */
