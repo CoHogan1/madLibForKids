@@ -1,24 +1,23 @@
 import './App.css';
-import React , { useState } from 'react'
-import Say from 'react-say'
+import React , { useState, useEffect } from 'react'
 
 import "text-to-speech-js"
 
 function MadLibOne() {
 
+    let [ voices, setVoices ] = useState([])
+
     let [ toggle, setToggle ]   = useState(false)
     let [ reading, setReading ] = useState(false)
+
     let [ answer, setAnswer ]   = useState({one:'',two:'', three: '', four: '',
          five:'', six:'', seven:'',eight:'',nine:'',ten:'',eleven:'',twelve:''
     })
 
-    let str = `Once upon a time, there was a lonely Prince named...${answer['one']}
-    PRINCE: I'm lonely.
-    His mother, the Queen of...${answer['two']} wanted to help him find a princess that would make him happy.
-    QUEEN: There are so many women out there that think they are princesses
-    because they buy a Disney princess costume and dress up like ${answer['three']}
-    , but it doesn't mean you're royalty.
-    So the Queen put a notice in the official royal news service called ${answer['four']}
+    let str = `Once upon a time, there was a lonely Prince named...${answer['one']}.
+    PRINCE: I'm lonely. His mother, the Queen of...${answer['two']} wanted to help him find a princess that would make him happy.
+    QUEEN: There are so many women out there that think they are princesses because they buy a Disney princess costume and dress up like ${answer['three']}
+    , but it doesn't mean you're royalty. So the Queen put a notice in the official royal news service called ${answer['four']}
     stating that they were seeking the one true princess in the land who would win a date with the prince.
     PRINCE: That's weird, Mom.
     Every woman who thought she was a princess wanted a date with the prince
@@ -53,54 +52,58 @@ function MadLibOne() {
     NARRATOR: And they lived
     ${answer['twelve']} ever after!`
 
-
-    let len = `Once upon a time, there was a lonely Prince named...${answer['one']}
-    PRINCE: I'm lonely.
-    His mother, the Queen of...${answer['two']} wanted to help him find a princess that would make him happy.
-    QUEEN: There are so many women out there that think they are princesses
-    because they buy a Disney princess`
-
     const onChange = (event) => {
         event.preventDefault()
         setAnswer({...answer, [event.target.name]: event.target.value})
     }
 
-    const readToMe = () => {
-        console.log("reading madlib")
+    const readToMe = (c) => {
         let msg = new SpeechSynthesisUtterance();
-        let voices = speechSynthesis.getVoices();
-        let length = str.length
-
-        msg.chunckLength = length
-        msg.rate = 1
-        msg.lang = "en" // eng?
-
-        for (let i = 0; i < length; i = i + 200) {
-            // may need an early exit.
-            msg.text = str.slice(i, (i + 200))
-            window.speechSynthesis.speak(msg)
+        let read = setInterval(()=>{
+                console.log("interval running");
+                window.speechSynthesis.pause()
+                window.speechSynthesis.resume()
+            }, 12000)
+        const endRead = () => {
+            clearInterval(read)
+            console.log("cleared Inteval");
         }
-        console.log(speechSynthesis.pending, " true is pending");
-        // reading turn to false.
+        msg.onend = () => {
+            endRead()
+            console.log("reading end")
+            console.log("interval end???")
+        }
+        msg.text = str
+        window.speechSynthesis.speak(msg)
+
+        setTimeout(()=> {
+            clearInterval(read)
+        },135000)
     }
 
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (reading) { return false }
         let quit = false
+
         Object.values(answer).forEach(item => {
-            // see if form inputs are all filled out
             if (item === '') { quit = true }
         })
 
         if (quit){
             console.log("fill out form properly");
-            // todo toggle a model asking for a form filled out properly.
             return
         }
         setToggle(true) // show story belod mad lib
     }
+
+
+    const getVoices = () => {
+        console.log("getting Voices")
+        setVoices(window.speechSynthesis.getVoices())
+    }
+
+    useEffect(getVoices, [])// empty array runs this once.
 
 
     return(

@@ -9,7 +9,6 @@ import MadLibFour from './lib04.js'
 
 import Footer from './footer.js'
 
-
 //let arr = ['one', 'two', 'three', 'four']
 
 
@@ -33,11 +32,18 @@ function App() {
     }
 
     const show = (value, setValue, element) => {
+        window.speechSynthesis.cancel()
         if (value === true){
             setValue(!value)
         } else {
             hide(element)
         }
+    }
+
+    const stopSpeech = () => { // works 100%
+        console.log("cancelling speech");
+        window.speechSynthesis.cancel()
+        console.log(window.speechSynthesis.speaking, " is speaking?");
     }
 
 
@@ -46,6 +52,7 @@ function App() {
   return (
     <div className="App">
         <h1>MadLibs</h1>
+        <button onClick={stopSpeech}>stop speech</button>
         <div className="nav">
             <div onClick={()=> show(one,   setOne,   1)}>One</div>
             <div onClick={()=> show(two,   setTwo,   2)}>Two</div>
@@ -59,8 +66,6 @@ function App() {
             {four  ? <MadLibFour />  : null}
         </div>
         {!one && !two && !three && !four ? <div className="story">Select a story</div> : null}
-
-
         <Footer />
     </div>
   )
