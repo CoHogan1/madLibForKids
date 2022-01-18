@@ -9,27 +9,12 @@ import MadLibFour from './lib04.js'
 
 import Footer from './footer.js'
 
-//let arr = ['one', 'two', 'three', 'four']
-
-
 function App() {
     let [ one, setOne ] = useState(false)
     let [ two, setTwo ] = useState(false)
     let [ three, setThree ] = useState(false)
     let [ four, setFour ] = useState(false)
-
     let arr = [setOne, setTwo, setThree, setFour]
-    //let brr = [one, two, three, four]
-
-    const hide = (ele) => {
-        arr.forEach((item, index) => {
-            if ((ele - 1) === index) {
-                arr[index](true)
-            } else {
-                arr[index](false)
-            }
-        })
-    }
 
     const show = (value, setValue, element) => {
         window.speechSynthesis.cancel()
@@ -46,20 +31,27 @@ function App() {
         console.log(window.speechSynthesis.speaking, " is speaking?");
     }
 
-
-
+    const hide = (ele) => {
+        arr.forEach((item, index) => {
+            if ((ele - 1) === index) {
+                arr[index](true)
+            } else {
+                arr[index](false)
+            }
+        })
+    }
 
   return (
     <div className="App">
         <h1>MadLibs</h1>
-        <button onClick={stopSpeech}>stop speech</button>
         <div className="nav">
-            <div onClick={()=> show(one,   setOne,   1)}>One</div>
-            <div onClick={()=> show(two,   setTwo,   2)}>Two</div>
-            <div onClick={()=> show(three, setThree, 3)}>Three</div>
-            <div onClick={()=> show(four,   setFour, 4)}>Four</div>
+            <div onClick={()=> show(one,   setOne,   1)}>The Prince</div>
+            <div onClick={()=> show(two,   setTwo,   2)}>Camping</div>
+            <div onClick={()=> show(three, setThree, 3)}>My Life</div>
+            <div onClick={()=> show(four,   setFour, 4)}>Back to School</div>
         </div>
         <div>
+            {one || two || three || four ? <button onClick={stopSpeech}>Stop Reading</button> : null}
             {one   ? <MadLibOne />   : null}
             {two   ? <MadLibTwo />   : null}
             {three ? <MadLibThree /> : null}

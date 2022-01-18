@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    width: 100vw;
+    height: 100%;
 }
 
 /*  sec   background  main  */
@@ -15,10 +17,10 @@
 /* banner */
 .App>h1 {
     margin: 0 auto;
-    margin-bottom: 30px;
-    width: 100%;
+    margin-bottom: 10px;
+    width: 100vw;
     height: 40px;
-    padding: 8px 0;
+    padding: 5px 0;
     background-color: var(--color-secondary);
     color: var(--color-primary);
 }
@@ -26,7 +28,7 @@
 /*  mad lib choser---nav */
 .nav {
     margin: 0 auto;
-    width: 90%;
+    min-width: 90%;
     max-width: 1000px;
     border-radius: 20px;
     display: grid;
@@ -34,13 +36,13 @@
 }
 .nav > div {
     height: 50px;
+    line-height: 50px;
     border-radius: 20px;
     background-color: var(--color-thirdendary);
 }
 .nav > div:active {
     border-radius: 20px;
     background-color: rgba(150,200,250, 0.5);
-
 }
 
 /* main directions */
@@ -55,13 +57,13 @@
     color: white;
 }
 
-
 /* all forms */
 form {
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 20px;
-    width: 600px;
+    max-width: 600px;
+    min-width: 90%;
     border: 5px solid var(--color-thirdendary);
     border-radius: 30px;
     background-color: var(--color-secondary);
@@ -91,9 +93,11 @@ input {
 .formSubmit{
     margin-top: 10px;
     height: 30px;
+    border-radius: 20px;
     background-color: var(--color-thirdendary);
     color: var(--color-primary);
 }
+
 .formSubmit:active {
     background-color: var(--color-secondary);
 }
@@ -109,17 +113,16 @@ input {
 
 /* all madlib components */
 .madLib {
-    height: 650px;
+    width: 100vw;
     background-color: var(--color-primary);
+    padding-bottom: 90px;
 }
 
 .madLib h2 {
     padding: 10px;
-    color: var(--color-secondary);
+    color: white;
     background-color: var(--color-thirdendar);
 }
-
-
 
 .fullStory {
     margin: 0 auto;
@@ -127,14 +130,22 @@ input {
     background-color: darkblue;
     color:white;
     font-size: 1.25em;
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
     box-shadow:5px 5px 20px black;
     border: 3px solid blue;
-
 }
 
-
+button{
+    margin: 5px auto;
+    background-color: red;
+    color: white;
+    padding: 7px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow:5px 5px 10px black;
+}
 
 /*  needs fixing */
 .footer {
@@ -146,7 +157,6 @@ input {
     background-color: var(--color-secondary);
     display: flex;
     flex-direction: column;
-
 }
 
 .footer > * {
@@ -155,6 +165,11 @@ input {
     color: black;
 }
 
+@media (max-width: 699px){
+    form {
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 
-
-/* @media   screen width below 700*/
+}
